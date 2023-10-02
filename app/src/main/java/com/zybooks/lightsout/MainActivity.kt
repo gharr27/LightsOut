@@ -25,6 +25,10 @@ class MainActivity : AppCompatActivity() {
         // Add the same click handler to all grid buttons
         for (gridButton in lightGridLayout.children) {
             gridButton.setOnClickListener(this::onLightButtonClick)
+
+            if (gridButton.id == R.id.cheatButton) {
+                gridButton.setOnLongClickListener(this::onLightButtonLongClick)
+            }
         }
 
         lightOnColor = ContextCompat.getColor(this, R.color.yellow)
@@ -77,5 +81,17 @@ class MainActivity : AppCompatActivity() {
 
     fun onNewGameClick(view: View) {
         startGame()
+    }
+
+    private fun onLightButtonLongClick(view: View): Boolean {
+        game.cheatGame()
+        setButtonColors()
+
+        // Congratulate the user if the game is over
+        if (game.isGameOver) {
+            Toast.makeText(this, R.string.congrats, Toast.LENGTH_SHORT).show()
+        }
+
+        return true
     }
 }
