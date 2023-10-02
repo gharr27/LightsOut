@@ -67,8 +67,10 @@ class MainActivity : AppCompatActivity() {
 
             if (game.isLightOn(row, col)) {
                 gridButton.setBackgroundColor(lightOnColor)
+                gridButton.contentDescription = getString(R.string.on)
             } else {
                 gridButton.setBackgroundColor(lightOffColor)
+                gridButton.contentDescription = getString(R.string.off)
             }
         }
     }
