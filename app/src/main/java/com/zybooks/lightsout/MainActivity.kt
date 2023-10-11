@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
 
+const val GAME_STATE = "gameState"
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,7 +36,19 @@ class MainActivity : AppCompatActivity() {
         lightOffColor = ContextCompat.getColor(this, R.color.black)
 
         game = LightsOutGame()
-        startGame()
+
+        if (savedInstanceState == null) {
+            startGame()
+        } else {
+            game.state = savedInstanceState.getBooleanArray(GAME_STATE)!!
+            setButtonColors()
+        }
+
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBooleanArray(GAME_STATE, game.state)
     }
 
     private fun startGame() {
