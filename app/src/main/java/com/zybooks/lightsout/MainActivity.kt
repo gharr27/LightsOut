@@ -10,6 +10,12 @@ import androidx.core.view.children
 
 const val GAME_STATE = "gameState"
 
+/*TODO:
+    1. Add Appbar with New Game button
+    2. Remove New Game button
+    3. Make New Game button in Appbar functional
+* */
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var game: LightsOutGame
