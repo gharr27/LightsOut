@@ -1,6 +1,8 @@
 package com.zybooks.lightsout
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.GridLayout
 import android.widget.Toast
@@ -98,7 +100,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun onNewGameClick(view: View) {
+    fun onNewGameClick(item: MenuItem) {
         startGame()
     }
 
@@ -112,5 +114,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 }

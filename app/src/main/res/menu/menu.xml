@@ -4,6 +4,7 @@
 
     <item android:id="@+id/action_new_game"
         android:title="@string/new_game"
+        android:onClick="onNewGameClick"
         android:icon="@drawable/baseline_autorenew_24"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
 </menu>
