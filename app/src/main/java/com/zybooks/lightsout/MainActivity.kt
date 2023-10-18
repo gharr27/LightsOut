@@ -1,5 +1,7 @@
 package com.zybooks.lightsout
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -9,14 +11,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
+import androidx.fragment.app.DialogFragment
 
 const val GAME_STATE = "gameState"
-
-/*TODO:
-    1. Add Appbar with New Game button
-    2. Remove New Game button
-    3. Make New Game button in Appbar functional
-* */
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var lightGridLayout: GridLayout
     private var lightOnColor = 0
     private var lightOffColor = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,7 +99,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onNewGameClick(item: MenuItem) {
-        startGame()
+        //Show Play again DialogFrag
+        val dialog = PlayAgainDialogFragment(this::startGame)
+        dialog.show(supportFragmentManager, "playAgainDialog")
     }
 
     private fun onLightButtonLongClick(view: View): Boolean {
